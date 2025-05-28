@@ -29,8 +29,13 @@ const formSchema = z
 	.object({
 		name: z.string().min(1, { message: 'Name is required' }),
 		email: z.string().email(),
-		password: z.string().min(1, { message: 'Password is required' }),
-		confirmPassword: z.string().min(1, { message: 'Password is required' }),
+		password: z
+			.string()
+			.min(8, { message: 'Password must be at least 8 characters' })
+			.regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/, {
+				message: 'Password must contain at least one uppercase letter, one lowercase letter, and one number',
+			}),
+		confirmPassword: z.string().min(8, { message: 'Password is required' }),
 	})
 	.refine((data) => data.password === data.confirmPassword, {
 		message: "Passwords don't match",
@@ -192,7 +197,7 @@ export const SignUpView = () => {
 								)}
 
 								<Button type="submit" disabled={pending} className="w-full">
-									Sign in
+									Sign up
 								</Button>
 
 								<div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">

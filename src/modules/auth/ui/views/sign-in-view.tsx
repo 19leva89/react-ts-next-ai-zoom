@@ -27,7 +27,12 @@ import { authClient } from '@/lib/auth-client'
 
 const formSchema = z.object({
 	email: z.string().email(),
-	password: z.string().min(1, { message: 'Password is required' }),
+	password: z
+		.string()
+		.min(8, { message: 'Password must be at least 8 characters' })
+		.regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/, {
+			message: 'Password must contain at least one uppercase letter, one lowercase letter, and one number',
+		}),
 })
 
 export const SignInView = () => {
