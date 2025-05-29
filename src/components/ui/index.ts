@@ -1,5 +1,5 @@
 export { Alert, AlertTitle } from './alert'
-export { Avatar, AvatarImage } from './avatar'
+export { Avatar, AvatarFallback, AvatarImage } from './avatar'
 export { Badge } from './badge'
 export { Button, buttonVariants } from './button'
 export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card'
@@ -11,9 +11,25 @@ export {
 	CarouselNext,
 	CarouselPrevious,
 } from './carousel'
+export { CommandResponsiveDialog, CommandInput, CommandItem, CommandList } from './command'
 export { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './dialog'
-export { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle } from './drawer'
-export { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './dropdown-menu'
+export {
+	Drawer,
+	DrawerContent,
+	DrawerDescription,
+	DrawerFooter,
+	DrawerHeader,
+	DrawerTitle,
+	DrawerTrigger,
+} from './drawer'
+export {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from './dropdown-menu'
 export { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from './form'
 export { Input } from './input'
 export { Label } from './label'
@@ -23,6 +39,7 @@ export { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '
 export {
 	Sidebar,
 	SidebarContent,
+	SidebarFooter,
 	SidebarGroup,
 	SidebarGroupContent,
 	SidebarGroupLabel,
@@ -31,6 +48,7 @@ export {
 	SidebarMenuButton,
 	SidebarMenuItem,
 	SidebarProvider,
+	SidebarSeparator,
 	SidebarTrigger,
 	useSidebar,
 } from './sidebar'

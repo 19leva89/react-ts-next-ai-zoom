@@ -191,7 +191,7 @@ export const SignInView = () => {
 						</form>
 					</Form>
 
-					<div className="relative md:flex flex-col gap-y-4 items-center justify-center bg-radial from-green-700 to-green-900 hidden">
+					<div className="relative md:flex flex-col gap-y-4 items-center justify-center bg-radial from-sidebar-accent to-sidebar hidden">
 						<img src="/svg/logo.svg" alt="Logo" className="size-23" />
 
 						<p className="text-2xl font-semibold text-white">Zoom.AI</p>

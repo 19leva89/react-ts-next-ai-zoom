@@ -236,7 +236,7 @@ export const SignUpView = () => {
 						</form>
 					</Form>
 
-					<div className="relative hidden md:flex flex-col items-center justify-center gap-y-4 bg-radial from-green-700 to-green-900">
+					<div className="relative hidden md:flex flex-col items-center justify-center gap-y-4 bg-radial from-sidebar-accent to-sidebar">
 						<img src="/svg/logo.svg" alt="Logo" className="size-23" />
 
 						<p className="text-2xl font-semibold text-white">Zoom.AI</p>
