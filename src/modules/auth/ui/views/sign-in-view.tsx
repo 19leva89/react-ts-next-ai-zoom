@@ -95,8 +95,8 @@ export const SignInView = () => {
 
 	return (
 		<div className="flex flex-col gap-6">
-			<Card className="overflow-hidden p-0">
-				<CardContent className="grid p-0 md:grid-cols-2">
+			<Card className="p-0 overflow-hidden">
+				<CardContent className="grid md:grid-cols-2 p-0">
 					<Form {...form}>
 						<form onSubmit={form.handleSubmit(onSubmit)} className="p-6 md:p-8">
 							<div className="flex flex-col gap-6">
@@ -108,8 +108,8 @@ export const SignInView = () => {
 
 								<div className="grid gap-3">
 									<FormField
-										control={form.control}
 										name="email"
+										control={form.control}
 										render={({ field }) => (
 											<FormItem>
 												<FormLabel>Email</FormLabel>
@@ -126,8 +126,8 @@ export const SignInView = () => {
 
 								<div className="grid gap-3">
 									<FormField
-										control={form.control}
 										name="password"
+										control={form.control}
 										render={({ field }) => (
 											<FormItem>
 												<FormLabel>Password</FormLabel>
@@ -154,7 +154,7 @@ export const SignInView = () => {
 									Sign in
 								</Button>
 
-								<div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
+								<div className="relative after:border-border text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
 									<span className="relative z-10 px-2 bg-card text-muted-foreground">Or continue with</span>
 								</div>
 
@@ -192,7 +192,7 @@ export const SignInView = () => {
 					</Form>
 
 					<div className="relative md:flex flex-col gap-y-4 items-center justify-center bg-radial from-green-700 to-green-900 hidden">
-						<img src="/svg/logo.svg" alt="Image" className="size-23" />
+						<img src="/svg/logo.svg" alt="Logo" className="size-23" />
 
 						<p className="text-2xl font-semibold text-white">Zoom.AI</p>
 					</div>
