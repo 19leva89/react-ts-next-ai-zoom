@@ -11,3 +11,13 @@ terminal powershell -> `npx drizzle-kit push`
 terminal powershell -> `npx drizzle-kit migrate`
 terminal powershell -> `npx drizzle-kit migrate reset`
 terminal powershell -> `npx tsx scripts/seed-categories.ts` (seed Categories)
+
+# GitHub commands:
+terminal powershell -> `git pull origin master` (get latest changes)
+
+terminal powershell -> `git add .` (add all changes)
+terminal powershell -> `git commit -m "commit message"` (commit changes)
+terminal powershell -> `git checkout -b <branch_name>` (create new branch)
+
+terminal powershell -> `git push origin master` (push changes to master)
+terminal powershell -> `git push origin <branch_name>` (push changes to branch)
