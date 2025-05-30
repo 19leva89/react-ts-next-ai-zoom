@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { PropsWithChildren } from 'react'
+import { NuqsAdapter } from 'nuqs/adapters/next'
 
 import { Toaster } from '@/components/ui'
 import { TRPCReactProvider } from '@/trpc/client'
@@ -18,14 +19,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
 	return (
-		<TRPCReactProvider>
-			<html lang="en">
-				<body className={`${inter.className} antialiased`}>
-					<Toaster position="bottom-right" expand={false} richColors />
+		<html lang="en">
+			<body className={`${inter.className} antialiased`}>
+				<Toaster position="bottom-right" expand={false} richColors />
 
-					{children}
-				</body>
-			</html>
-		</TRPCReactProvider>
+				<NuqsAdapter>
+					<TRPCReactProvider>{children}</TRPCReactProvider>
+				</NuqsAdapter>
+			</body>
+		</html>
 	)
 }
