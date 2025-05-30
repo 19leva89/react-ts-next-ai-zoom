@@ -53,10 +53,6 @@ body {
 	-ms-overflow-style: none;
 }
 
-button {
-	cursor: pointer;
-}
-
 :root {
 	--radius: 0.625rem;
 	--background: oklch(1 0 0);
@@ -132,5 +128,13 @@ button {
 	}
 	body {
 		@apply bg-background text-foreground;
+	}
+}
+
+/* Add cursor pointer to buttons */
+@layer base {
+	button:not(:disabled),
+	[role='button']:not(:disabled) {
+		cursor: pointer;
 	}
 }
