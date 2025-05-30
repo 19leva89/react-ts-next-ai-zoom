@@ -22,8 +22,8 @@ export const agentsRouter = createTRPCRouter({
 	getOne: protectedProcedure.input(z.object({ id: z.string() })).query(async ({ input }) => {
 		const [existingAgent] = await db
 			.select({
-				//TODO change
-				meetingCount: sql<number>`5`,
+				//TODO: Change to actual meeting count
+				meetingCount: sql`array_agg(meetings.id)`,
 				...getTableColumns(agents),
 			})
 			.from(agents)
