@@ -1,6 +1,7 @@
 export { Alert, AlertTitle } from './alert'
 export { Avatar, AvatarFallback, AvatarImage } from './avatar'
 export { Badge } from './badge'
+export { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from './breadcrumb'
 export { Button, buttonVariants } from './button'
 export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card'
 export {
