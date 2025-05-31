@@ -10,7 +10,7 @@ interface Props<TData, TValue> {
 	onRowClick?: (row: TData) => void
 }
 
-export function DataTable<TData, TValue>({ columns, data, onRowClick }: Props<TData, TValue>) {
+export const DataTable = <TData, TValue> ({ columns, data, onRowClick }: Props<TData, TValue>) => {
 	const table = useReactTable({
 		data,
 		columns,
