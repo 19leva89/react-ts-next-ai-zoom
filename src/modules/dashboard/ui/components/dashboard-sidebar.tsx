@@ -66,7 +66,7 @@ export const DashboardSidebar = () => {
 										asChild
 										isActive={pathname === item.href}
 										className={cn(
-											'from-sidebar-accent via-sidebar/50 to-sidebar/50 h-10 border border-transparent from-5% via-30% hover:border-[#5D6B68]/10 hover:bg-linear-to-r/oklch',
+											'h-10 border border-transparent from-sidebar-accent from-5% via-sidebar/50 via-30% to-sidebar/50 hover:border-[#5D6B68]/10 hover:bg-linear-to-r/oklch',
 											pathname === item.href && 'border-[#5D6B68]/10 bg-linear-to-r/oklch',
 										)}
 									>
@@ -95,7 +95,7 @@ export const DashboardSidebar = () => {
 										asChild
 										isActive={pathname === item.href}
 										className={cn(
-											'from-sidebar-accent via-sidebar/50 to-sidebar/50 h-10 border border-transparent from-5% via-30% hover:border-[#5D6B68]/10 hover:bg-linear-to-r/oklch',
+											'h-10 border border-transparent from-sidebar-accent from-5% via-sidebar/50 via-30% to-sidebar/50 hover:border-[#5D6B68]/10 hover:bg-linear-to-r/oklch',
 											pathname === item.href && 'border-[#5D6B68]/10 bg-linear-to-r/oklch',
 										)}
 									>
