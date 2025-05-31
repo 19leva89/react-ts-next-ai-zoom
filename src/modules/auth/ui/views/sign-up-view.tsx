@@ -113,7 +113,7 @@ export const SignUpView = () => {
 								<div className='flex flex-col items-center text-center'>
 									<h1 className='text-2xl font-bold'>Let&apos;s get started</h1>
 
-									<p className='text-muted-foreground text-balance'>Create your account</p>
+									<p className='text-balance text-muted-foreground'>Create your account</p>
 								</div>
 
 								<div className='grid gap-3'>
@@ -189,8 +189,8 @@ export const SignUpView = () => {
 								</div>
 
 								{!!error && (
-									<Alert className='bg-destructive/10 border-none'>
-										<OctagonAlertIcon className='!text-destructive size-4' />
+									<Alert className='border-none bg-destructive/10'>
+										<OctagonAlertIcon className='size-4 !text-destructive' />
 
 										<AlertTitle>{error}</AlertTitle>
 									</Alert>
@@ -200,8 +200,8 @@ export const SignUpView = () => {
 									Sign up
 								</Button>
 
-								<div className='after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t'>
-									<span className='bg-card text-muted-foreground relative z-10 px-2'>Or continue with</span>
+								<div className='relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border'>
+									<span className='relative z-10 bg-card px-2 text-muted-foreground'>Or continue with</span>
 								</div>
 
 								<div className='grid grid-cols-2 gap-4'>
@@ -236,7 +236,7 @@ export const SignUpView = () => {
 						</form>
 					</Form>
 
-					<div className='from-sidebar-accent to-sidebar relative hidden flex-col items-center justify-center gap-y-4 bg-radial md:flex'>
+					<div className='relative hidden flex-col items-center justify-center gap-y-4 bg-radial from-sidebar-accent to-sidebar md:flex'>
 						<img src='/svg/logo.svg' alt='Logo' className='size-23' />
 
 						<p className='text-2xl font-semibold text-white'>Zoom.AI</p>
@@ -244,7 +244,7 @@ export const SignUpView = () => {
 				</CardContent>
 			</Card>
 
-			<div className='text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4'>
+			<div className='text-center text-xs text-balance text-muted-foreground *:[a]:underline *:[a]:underline-offset-4 *:[a]:hover:text-primary'>
 				By clicking continue, you agree to our <a href='#'>Terms of Service</a> and{' '}
 				<a href='#'>Privacy Policy</a>
 			</div>
