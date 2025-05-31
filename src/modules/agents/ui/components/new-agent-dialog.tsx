@@ -9,8 +9,8 @@ interface Props {
 export const NewAgentDialog = ({ open, onOpenChange }: Props) => {
 	return (
 		<ResponsiveDialog
-			title="New agent"
-			description="Create a new agent"
+			title='New agent'
+			description='Create a new agent'
 			open={open}
 			onOpenChange={onOpenChange}
 		>

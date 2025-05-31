@@ -9,7 +9,7 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
 		<SidebarProvider>
 			<DashboardSidebar />
 
-			<main className="flex flex-col h-screen w-screen bg-muted">
+			<main className='bg-muted flex h-screen w-screen flex-col'>
 				<DashboardNavbar />
 
 				{children}

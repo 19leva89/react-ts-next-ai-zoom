@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
 	return (
-		<html lang="en">
+		<html lang='en'>
 			<body className={`${inter.className} antialiased`}>
-				<Toaster position="bottom-right" expand={false} richColors />
+				<Toaster position='bottom-right' expand={false} richColors />
 
 				<NuqsAdapter>
 					<TRPCReactProvider>{children}</TRPCReactProvider>

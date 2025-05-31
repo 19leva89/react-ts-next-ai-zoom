@@ -8,15 +8,15 @@ interface Props {
 
 export const DataPagination = ({ page, totalPages, onPageChange }: Props) => {
 	return (
-		<div className="flex items-center justify-between">
-			<div className="flex-1 text-sm text-muted-foreground">
+		<div className='flex items-center justify-between'>
+			<div className='text-muted-foreground flex-1 text-sm'>
 				Page {page} of {totalPages || 1}
 			</div>
 
-			<div className="flex items-center justify-end space-x-2 px-4">
+			<div className='flex items-center justify-end space-x-2 px-4'>
 				<Button
-					variant="outline"
-					size="sm"
+					variant='outline'
+					size='sm'
 					disabled={page === 1}
 					onClick={() => onPageChange(Math.max(1, page - 1))}
 				>
@@ -24,8 +24,8 @@ export const DataPagination = ({ page, totalPages, onPageChange }: Props) => {
 				</Button>
 
 				<Button
-					variant="outline"
-					size="sm"
+					variant='outline'
+					size='sm'
 					disabled={page === totalPages || totalPages === 0}
 					onClick={() => onPageChange(Math.min(totalPages, page + 1))}
 				>

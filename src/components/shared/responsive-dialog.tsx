@@ -37,7 +37,7 @@ export const ResponsiveDialog = ({ title, description, children, open, onOpenCha
 						<DrawerDescription>{description}</DrawerDescription>
 					</DrawerHeader>
 
-					<div className="p-4">{children}</div>
+					<div className='p-4'>{children}</div>
 				</DrawerContent>
 			</Drawer>
 		)
