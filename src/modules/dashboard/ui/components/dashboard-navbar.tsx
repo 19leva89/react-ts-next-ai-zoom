@@ -28,7 +28,7 @@ export const DashboardNavbar = () => {
 		<>
 			<DashboardCommand open={commandOpen} setOpen={setCommandOpen} />
 
-			<nav className='bg-background flex items-center gap-x-2 border-b px-4 py-3'>
+			<nav className='flex items-center gap-x-2 border-b bg-background px-4 py-3'>
 				<Button variant='outline' onClick={toggleSidebar} className='size-9'>
 					{state === 'collapsed' || isMobile ? (
 						<PanelLeftIcon className='size-4' />
@@ -41,11 +41,11 @@ export const DashboardNavbar = () => {
 					variant='outline'
 					size='sm'
 					onClick={() => setCommandOpen((open) => !open)}
-					className='text-muted-foreground hover:text-muted-foreground h-9 w-60 justify-start font-normal'
+					className='h-9 w-60 justify-start font-normal text-muted-foreground hover:text-muted-foreground'
 				>
 					<SearchIcon />
 					Search
-					<kbd className='bg-muted text-muted-foreground pointer-events-none ml-auto inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium select-none'>
+					<kbd className='pointer-events-none ml-auto inline-flex h-5 items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground select-none'>
 						<span className='text-sm'>&#8984;</span>K
 					</kbd>
 				</Button>

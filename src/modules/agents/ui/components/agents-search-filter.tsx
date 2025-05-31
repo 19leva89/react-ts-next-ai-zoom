@@ -20,14 +20,14 @@ export const AgentsSearchFilter = () => {
 				className='h-9 bg-white pr-9 pl-7'
 			/>
 
-			<SearchIcon className='text-muted-foreground absolute top-1/2 left-2 size-4 -translate-y-1/2' />
+			<SearchIcon className='absolute top-1/2 left-2 size-4 -translate-y-1/2 text-muted-foreground' />
 
 			{isAnyFilterModified && (
 				<Button
 					variant='ghost'
 					size='icon'
 					onClick={onClearFilters}
-					className='text-muted-foreground hover:text-foreground absolute top-1/2 right-1 -translate-y-1/2 hover:bg-transparent'
+					className='absolute top-1/2 right-1 -translate-y-1/2 text-muted-foreground hover:bg-transparent hover:text-foreground'
 				>
 					<XCircleIcon />
 				</Button>
