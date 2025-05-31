@@ -33,10 +33,10 @@ export const useConfirm = (
 
 	const ConfirmationDialog = () => (
 		<ResponsiveDialog
-			open={promise !== null}
-			onOpenChange={handleCancel}
 			title={title}
 			description={description}
+			open={promise !== null}
+			onOpenChange={handleCancel}
 		>
 			<div className='flex w-full flex-col-reverse items-center justify-end gap-x-2 gap-y-2 pt-4 lg:flex-row'>
 				<Button variant='outline' onClick={handleCancel} className='w-full lg:w-auto'>

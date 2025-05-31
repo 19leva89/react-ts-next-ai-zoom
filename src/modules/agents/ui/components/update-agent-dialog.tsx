@@ -3,12 +3,12 @@ import { ResponsiveDialog } from '@/components/shared'
 import { AgentForm } from '@/modules/agents/ui/components/agent-form'
 
 type Props = {
+	initialValues: AgentGetOne
 	open: boolean
 	onOpenChange: (open: boolean) => void
-	initialValues: AgentGetOne
 }
 
-export default function UpdateAgentDialog({ open, onOpenChange, initialValues }: Props) {
+export const UpdateAgentDialog = ({ initialValues, open, onOpenChange }: Props) => {
 	return (
 		<ResponsiveDialog
 			title='Edit agent'
