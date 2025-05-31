@@ -17,7 +17,7 @@ export const AgentsView = () => {
 	const { data } = useSuspenseQuery(trpc.agents.getMany.queryOptions({ ...filters }))
 
 	return (
-		<div className="flex flex-1 flex-col gap-y-4 pb-4 px-4 md:px-8">
+		<div className='flex flex-1 flex-col gap-y-4 px-4 pb-4 md:px-8'>
 			<DataTable data={data.items} columns={columns} />
 
 			<DataPagination
@@ -28,8 +28,8 @@ export const AgentsView = () => {
 
 			{data.items.length === 0 && (
 				<EmptyState
-					title="Create your first agent"
-					description="Create an agent to join your meetings. Each agent will follow your instructions and can interact with participants during the call."
+					title='Create your first agent'
+					description='Create an agent to join your meetings. Each agent will follow your instructions and can interact with participants during the call.'
 				/>
 			)}
 		</div>
@@ -37,9 +37,9 @@ export const AgentsView = () => {
 }
 
 export const AgentsViewLoading = () => {
-	return <LoadingState title="Loading agents" description="This may take a few seconds" />
+	return <LoadingState title='Loading agents' description='This may take a few seconds' />
 }
 
 export const AgentsViewError = () => {
-	return <ErrorState title="Failed to load agents" description="Please try again later" />
+	return <ErrorState title='Failed to load agents' description='Please try again later' />
 }

@@ -46,14 +46,14 @@ export const DashboardSidebar = () => {
 
 	return (
 		<Sidebar>
-			<SidebarHeader className="text-sidebar-accent-foreground">
-				<Link href="/" className="flex items-center justify-center px-2 pt-2">
-					<Image src="/svg/logo-sidebar-light.svg" alt="Zoom.AI" height={40} width={120} />
+			<SidebarHeader className='text-sidebar-accent-foreground'>
+				<Link href='/' className='flex items-center justify-center px-2 pt-2'>
+					<Image src='/svg/logo-sidebar-light.svg' alt='Zoom.AI' height={40} width={120} />
 				</Link>
 			</SidebarHeader>
 
-			<div className="px-4 py-2">
-				<SidebarSeparator className="mx-0 opacity-10 text-[#5D6B68]" />
+			<div className='px-4 py-2'>
+				<SidebarSeparator className='mx-0 text-[#5D6B68] opacity-10' />
 			</div>
 
 			<SidebarContent>
@@ -66,14 +66,14 @@ export const DashboardSidebar = () => {
 										asChild
 										isActive={pathname === item.href}
 										className={cn(
-											'h-10 hover:bg-linear-to-r/oklch border border-transparent hover:border-[#5D6B68]/10 from-sidebar-accent from-5% via-30% via-sidebar/50 to-sidebar/50',
-											pathname === item.href && 'bg-linear-to-r/oklch border-[#5D6B68]/10',
+											'from-sidebar-accent via-sidebar/50 to-sidebar/50 h-10 border border-transparent from-5% via-30% hover:border-[#5D6B68]/10 hover:bg-linear-to-r/oklch',
+											pathname === item.href && 'border-[#5D6B68]/10 bg-linear-to-r/oklch',
 										)}
 									>
 										<Link href={item.href}>
-											<item.icon className="size-5" />
+											<item.icon className='size-5' />
 
-											<span className="text-sm font-medium tracking-tight">{item.label}</span>
+											<span className='text-sm font-medium tracking-tight'>{item.label}</span>
 										</Link>
 									</SidebarMenuButton>
 								</SidebarMenuItem>
@@ -82,8 +82,8 @@ export const DashboardSidebar = () => {
 					</SidebarGroupContent>
 				</SidebarGroup>
 
-				<div className="px-4 py-2">
-					<SidebarSeparator className="mx-0 opacity-10 text-[#5D6B68]" />
+				<div className='px-4 py-2'>
+					<SidebarSeparator className='mx-0 text-[#5D6B68] opacity-10' />
 				</div>
 
 				<SidebarGroup>
@@ -95,14 +95,14 @@ export const DashboardSidebar = () => {
 										asChild
 										isActive={pathname === item.href}
 										className={cn(
-											'h-10 hover:bg-linear-to-r/oklch border border-transparent hover:border-[#5D6B68]/10 from-sidebar-accent from-5% via-30% via-sidebar/50 to-sidebar/50',
-											pathname === item.href && 'bg-linear-to-r/oklch border-[#5D6B68]/10',
+											'from-sidebar-accent via-sidebar/50 to-sidebar/50 h-10 border border-transparent from-5% via-30% hover:border-[#5D6B68]/10 hover:bg-linear-to-r/oklch',
+											pathname === item.href && 'border-[#5D6B68]/10 bg-linear-to-r/oklch',
 										)}
 									>
 										<Link href={item.href}>
-											<item.icon className="size-5" />
+											<item.icon className='size-5' />
 
-											<span className="text-sm font-medium tracking-tight">{item.label}</span>
+											<span className='text-sm font-medium tracking-tight'>{item.label}</span>
 										</Link>
 									</SidebarMenuButton>
 								</SidebarMenuItem>
@@ -112,7 +112,7 @@ export const DashboardSidebar = () => {
 				</SidebarGroup>
 			</SidebarContent>
 
-			<SidebarFooter className="text-white">
+			<SidebarFooter className='text-white'>
 				<DashboardUserButton />
 			</SidebarFooter>
 		</Sidebar>

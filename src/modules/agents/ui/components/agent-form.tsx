@@ -68,18 +68,18 @@ export const AgentForm = ({ onCancel, onSuccess, initialValues }: Props) => {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-				<GeneratedAvatar seed={form.watch('name')} variant="botttsNeutral" className="size-16 border" />
+			<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
+				<GeneratedAvatar seed={form.watch('name')} variant='botttsNeutral' className='size-16 border' />
 
 				<FormField
-					name="name"
+					name='name'
 					control={form.control}
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Name</FormLabel>
 
 							<FormControl>
-								<Input {...field} placeholder="e.g. Math tutor" />
+								<Input {...field} placeholder='e.g. Math tutor' />
 							</FormControl>
 
 							<FormMessage />
@@ -88,7 +88,7 @@ export const AgentForm = ({ onCancel, onSuccess, initialValues }: Props) => {
 				/>
 
 				<FormField
-					name="instructions"
+					name='instructions'
 					control={form.control}
 					render={({ field }) => (
 						<FormItem>
@@ -97,7 +97,7 @@ export const AgentForm = ({ onCancel, onSuccess, initialValues }: Props) => {
 							<FormControl>
 								<Textarea
 									{...field}
-									placeholder="You are a helpful math assistant that can answer questions and help with assignments"
+									placeholder='You are a helpful math assistant that can answer questions and help with assignments'
 								/>
 							</FormControl>
 
@@ -106,14 +106,14 @@ export const AgentForm = ({ onCancel, onSuccess, initialValues }: Props) => {
 					)}
 				/>
 
-				<div className="flex justify-between gap-x-2">
+				<div className='flex justify-between gap-x-2'>
 					{onCancel && (
-						<Button variant="ghost" type="button" disabled={isPending} onClick={() => onCancel()}>
+						<Button variant='ghost' type='button' disabled={isPending} onClick={() => onCancel()}>
 							Cancel
 						</Button>
 					)}
 
-					<Button type="submit" disabled={isPending}>
+					<Button type='submit' disabled={isPending}>
 						{isEdit ? 'Update' : 'Create'}
 					</Button>
 				</div>
