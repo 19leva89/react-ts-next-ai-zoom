@@ -16,7 +16,7 @@ import {
 	DropdownMenuTrigger,
 } from '@/components/ui'
 
-type Props = {
+interface Props {
 	agentId: string
 	agentName: string
 	onEdit: () => void

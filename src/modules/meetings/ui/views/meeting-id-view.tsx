@@ -15,7 +15,7 @@ import { ProcessingState } from '@/modules/meetings/ui/components/processing-sta
 import { UpdateMeetingDialog } from '@/modules/meetings/ui/components/update-meeting-dialog'
 import { MeetingIdViewHeader } from '@/modules/meetings/ui/components/meeting-id-view-header'
 
-type Props = {
+interface Props {
 	meetingId: string
 }
 

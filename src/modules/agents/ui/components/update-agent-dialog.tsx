@@ -2,7 +2,7 @@ import { AgentGetOne } from '@/modules/agents/types'
 import { ResponsiveDialog } from '@/components/shared'
 import { AgentForm } from '@/modules/agents/ui/components/agent-form'
 
-type Props = {
+interface Props {
 	initialValues: AgentGetOne
 	open: boolean
 	onOpenChange: (open: boolean) => void

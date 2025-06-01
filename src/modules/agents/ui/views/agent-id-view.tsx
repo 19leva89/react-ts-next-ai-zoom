@@ -14,7 +14,7 @@ import { ErrorState, GeneratedAvatar, LoadingState } from '@/components/shared'
 import { UpdateAgentDialog } from '@/modules/agents/ui/components/update-agent-dialog'
 import { AgentIdViewHeader } from '@/modules/agents/ui/components/agent-id-view-header'
 
-type Props = {
+interface Props {
 	agentId: string
 }
 
