@@ -28,13 +28,8 @@ export const meetingsRouter = createTRPCRouter({
 			},
 		])
 
-		const issuedAt = Math.floor(Date.now() / 1000) - 60
-		const expirationTime = Math.floor(Date.now() / 1000) + 3600 // 1 hour
-
 		const token = streamVideo.generateUserToken({
 			user_id: ctx.auth.user.id,
-			exp: expirationTime,
-			validity_in_seconds: issuedAt,
 		})
 
 		return token
@@ -48,6 +43,16 @@ export const meetingsRouter = createTRPCRouter({
 				userId: ctx.auth.user.id,
 			})
 			.returning()
+
+		// Validate agent exists before creating stream resources
+		const [existingAgent] = await db.select().from(agents).where(eq(agents.id, createdMeeting.agentId))
+
+		if (!existingAgent) {
+			throw new TRPCError({
+				code: 'NOT_FOUND',
+				message: 'Agent not found',
+			})
+		}
 
 		// Create stream call, upsert stream users
 		const call = streamVideo.video.call('default', createdMeeting.id)
@@ -72,15 +77,6 @@ export const meetingsRouter = createTRPCRouter({
 				},
 			},
 		})
-
-		const [existingAgent] = await db.select().from(agents).where(eq(agents.id, createdMeeting.agentId))
-
-		if (!existingAgent) {
-			throw new TRPCError({
-				code: 'NOT_FOUND',
-				message: 'Agent not found',
-			})
-		}
 
 		await streamVideo.upsertUsers([
 			{

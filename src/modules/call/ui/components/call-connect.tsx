@@ -27,20 +27,38 @@ export const CallConnect = ({ meetingId, meetingName, userId, userName, userImag
 	const [client, setClient] = useState<StreamVideoClient>()
 
 	useEffect(() => {
-		const _client = new StreamVideoClient({
-			apiKey: process.env.NEXT_PUBLIC_STREAM_VIDEO_API_KEY!,
-			user: {
-				id: userId,
-				name: userName,
-				image: userImage,
-			},
-			tokenProvider: generateToken,
-		})
+		let _client: StreamVideoClient | undefined
 
-		setClient(_client)
+		const apiKey = process.env.NEXT_PUBLIC_STREAM_VIDEO_API_KEY
+		if (!apiKey) {
+			throw new Error('NEXT_PUBLIC_STREAM_VIDEO_API_KEY is not configured')
+		}
+
+		const initializeClient = async () => {
+			try {
+				_client = new StreamVideoClient({
+					apiKey,
+					user: {
+						id: userId,
+						name: userName,
+						image: userImage,
+					},
+					tokenProvider: generateToken,
+				})
+
+				setClient(_client)
+			} catch (error) {
+				console.error('Failed to initialize Stream Video client:', error)
+				// Consider showing an error state to the user
+			}
+		}
+
+		initializeClient()
 
 		return () => {
-			_client.disconnectUser()
+			if (_client) {
+				_client.disconnectUser()
+			}
 			setClient(undefined)
 		}
 	}, [userId, userName, userImage, generateToken])

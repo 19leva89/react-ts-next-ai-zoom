@@ -19,17 +19,28 @@ export const CallUI = ({ meetingName }: Props) => {
 	const handleJoin = async () => {
 		if (!call) return
 
-		await call.join()
+		try {
+			await call.join()
 
-		setShow('call')
+			setShow('call')
+		} catch (error) {
+			console.error('Failed to join call:', error)
+			// Consider showing an error message to the user
+		}
 	}
 
 	const handleLeave = async () => {
 		if (!call) return
 
-		await call.endCall()
+		try {
+			await call.endCall()
 
-		setShow('ended')
+			setShow('ended')
+		} catch (error) {
+			console.error('Failed to end call:', error)
+			// Still transition to ended state even if endCall fails
+			setShow('ended')
+		}
 	}
 
 	return (

@@ -16,7 +16,7 @@ interface Props {
 	params: Promise<{ meetingId: string }>
 }
 
-export const MeetingPage = async ({ params }: Props) => {
+const MeetingPage = async ({ params }: Props) => {
 	const session = await auth.api.getSession({
 		headers: await headers(),
 	})
