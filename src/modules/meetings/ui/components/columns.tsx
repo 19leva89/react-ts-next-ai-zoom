@@ -15,6 +15,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui'
 import { GeneratedAvatar } from '@/components/shared'
+import { capitalizeFirst } from '@/lib/capitalize-first'
 import { MeetingGetMany } from '@/modules/meetings/types'
 
 function formatDuration(seconds: number) {
@@ -47,13 +48,15 @@ export const columns: ColumnDef<MeetingGetMany[number]>[] = [
 		header: 'Meeting name',
 		cell: ({ row }) => (
 			<div className='flex flex-col gap-y-1'>
-				<div className='font-semibold capitalize'>{row.original.name}</div>
+				<div className='font-semibold'>{capitalizeFirst(row.original.name)}</div>
 
 				<div className='flex items-center gap-x-2'>
 					<div className='flex items-center gap-x-1'>
 						<CornerDownRightIcon className='size-3 text-muted-foreground' />
 
-						<span className='max-w-50 truncate text-sm text-muted-foreground'>{row.original.agent.name}</span>
+						<span className='max-w-50 truncate text-sm text-muted-foreground'>
+							{capitalizeFirst(row.original.agent.name)}
+						</span>
 					</div>
 
 					<GeneratedAvatar variant='botttsNeutral' seed={row.original.agent.name} className='size-4' />
@@ -75,13 +78,13 @@ export const columns: ColumnDef<MeetingGetMany[number]>[] = [
 				<Badge
 					variant='outline'
 					className={cn(
-						'text-muted-foreground capitalize [&>svg]:size-4',
+						'text-muted-foreground [&>svg]:size-4',
 						statusColorMap[row.original.status as keyof typeof statusColorMap],
 					)}
 				>
 					<Icon className={cn(row.original.status === 'processing' && 'animate-spin')} />
 
-					{row.original.status}
+					{capitalizeFirst(row.original.status)}
 				</Badge>
 			)
 		},
@@ -90,10 +93,10 @@ export const columns: ColumnDef<MeetingGetMany[number]>[] = [
 		accessorKey: 'duration',
 		header: 'Duration',
 		cell: ({ row }) => (
-			<Badge variant='outline' className='capitalize [&>svg]:size-4'>
+			<Badge variant='outline' className='[&>svg]:size-4'>
 				<ClockFadingIcon className='text-blue-700' />
 
-				{row.original.duration ? formatDuration(row.original.duration) : 'No duration'}
+				{capitalizeFirst(row.original.duration ? formatDuration(row.original.duration) : 'No duration')}
 			</Badge>
 		),
 	},

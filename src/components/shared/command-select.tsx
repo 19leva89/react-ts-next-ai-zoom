@@ -17,11 +17,11 @@ type Props = {
 		value: string
 		children: ReactNode
 	}>
-	onSelect: (value: string) => void
-	onSearch?: (value: string) => void
 	value: string
 	placeholder?: string
 	className?: string
+	onSelect: (value: string) => void
+	onSearch?: (value: string) => void
 }
 
 export const CommandSelect = ({
@@ -44,9 +44,9 @@ export const CommandSelect = ({
 	return (
 		<>
 			<Button
+				variant='outline'
 				type='button'
 				onClick={() => setOpen(true)}
-				variant='outline'
 				className={cn(
 					'h-9 justify-between px-2 font-normal',
 					!selectedOption && 'text-muted-foreground',
@@ -73,6 +73,7 @@ export const CommandSelect = ({
 								onSelect(option.value)
 								setOpen(false)
 							}}
+							className='cursor-pointer'
 						>
 							{option.children}
 						</CommandItem>

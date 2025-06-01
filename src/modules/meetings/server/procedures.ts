@@ -40,62 +40,62 @@ export const meetingsRouter = createTRPCRouter({
 	// 	return token
 	// }),
 
-	// create: protectedProcedure.input(meetingsInsertSchema).mutation(async ({ input, ctx }) => {
-	// 	const [createdMeeting] = await db
-	// 		.insert(meetings)
-	// 		.values({
-	// 			...input,
-	// 			userId: ctx.auth.user.id,
-	// 		})
-	// 		.returning()
+	create: protectedProcedure.input(meetingsInsertSchema).mutation(async ({ ctx, input }) => {
+		const [createdMeeting] = await db
+			.insert(meetings)
+			.values({
+				...input,
+				userId: ctx.auth.user.id,
+			})
+			.returning()
 
-	// 	// Create stream call, upsert stream users
-	// 	const call = streamVideo.video.call('default', createdMeeting.id)
+		// Create stream call, upsert stream users
+		// const call = streamVideo.video.call('default', createdMeeting.id)
 
-	// 	await call.create({
-	// 		data: {
-	// 			created_by_id: ctx.auth.user.id,
-	// 			custom: {
-	// 				meetingId: createdMeeting.id,
-	// 				meetingName: createdMeeting.name,
-	// 			},
-	// 			settings_override: {
-	// 				transcription: {
-	// 					language: 'en',
-	// 					mode: 'auto-on',
-	// 					closed_caption_mode: 'auto-on',
-	// 				},
-	// 				recording: {
-	// 					mode: 'auto-on',
-	// 					quality: '1080p',
-	// 				},
-	// 			},
-	// 		},
-	// 	})
+		// await call.create({
+		// 	data: {
+		// 		created_by_id: ctx.auth.user.id,
+		// 		custom: {
+		// 			meetingId: createdMeeting.id,
+		// 			meetingName: createdMeeting.name,
+		// 		},
+		// 		settings_override: {
+		// 			transcription: {
+		// 				language: 'en',
+		// 				mode: 'auto-on',
+		// 				closed_caption_mode: 'auto-on',
+		// 			},
+		// 			recording: {
+		// 				mode: 'auto-on',
+		// 				quality: '1080p',
+		// 			},
+		// 		},
+		// 	},
+		// })
 
-	// 	const [existingAgent] = await db.select().from(agents).where(eq(agents.id, createdMeeting.agentId))
+		// const [existingAgent] = await db.select().from(agents).where(eq(agents.id, createdMeeting.agentId))
 
-	// 	if (!existingAgent) {
-	// 		throw new TRPCError({
-	// 			code: 'NOT_FOUND',
-	// 			message: 'Agent not found',
-	// 		})
-	// 	}
+		// if (!existingAgent) {
+		// 	throw new TRPCError({
+		// 		code: 'NOT_FOUND',
+		// 		message: 'Agent not found',
+		// 	})
+		// }
 
-	// 	await streamVideo.upsertUsers([
-	// 		{
-	// 			id: existingAgent.id,
-	// 			name: existingAgent.name,
-	// 			role: 'user',
-	// 			image: generatedAvatarUri({
-	// 				seed: existingAgent.name,
-	// 				variant: 'botttsNeutral',
-	// 			}),
-	// 		},
-	// 	])
+		// await streamVideo.upsertUsers([
+		// 	{
+		// 		id: existingAgent.id,
+		// 		name: existingAgent.name,
+		// 		role: 'user',
+		// 		image: generatedAvatarUri({
+		// 			seed: existingAgent.name,
+		// 			variant: 'botttsNeutral',
+		// 		}),
+		// 	},
+		// ])
 
-	// 	return createdMeeting
-	// }),
+		return createdMeeting
+	}),
 
 	getOne: protectedProcedure.input(z.object({ id: z.string() })).query(async ({ ctx, input }) => {
 		const [existingMeeting] = await db
@@ -178,19 +178,19 @@ export const meetingsRouter = createTRPCRouter({
 			}
 		}),
 
-	// update: protectedProcedure.input(meetingsUpdateSchema).mutation(async ({ ctx, input }) => {
-	// 	const [updatedMeeting] = await db
-	// 		.update(meetings)
-	// 		.set(input)
-	// 		.where(and(eq(meetings.id, input.id), eq(meetings.userId, ctx.auth.user.id)))
-	// 		.returning()
+	update: protectedProcedure.input(meetingsUpdateSchema).mutation(async ({ ctx, input }) => {
+		const [updatedMeeting] = await db
+			.update(meetings)
+			.set(input)
+			.where(and(eq(meetings.id, input.id), eq(meetings.userId, ctx.auth.user.id)))
+			.returning()
 
-	// 	if (!updatedMeeting) {
-	// 		throw new TRPCError({ code: 'NOT_FOUND', message: 'Agent not found' })
-	// 	}
+		if (!updatedMeeting) {
+			throw new TRPCError({ code: 'NOT_FOUND', message: 'Meeting not found' })
+		}
 
-	// 	return updatedMeeting
-	// }),
+		return updatedMeeting
+	}),
 
 	// remove: protectedProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input }) => {
 	// 	const [removedMeeting] = await db
@@ -199,7 +199,7 @@ export const meetingsRouter = createTRPCRouter({
 	// 		.returning()
 
 	// 	if (!removedMeeting) {
-	// 		throw new TRPCError({ code: 'NOT_FOUND', message: 'Agent not found' })
+	// 		throw new TRPCError({ code: 'NOT_FOUND', message: 'Meeting not found' })
 	// 	}
 
 	// 	return removedMeeting
