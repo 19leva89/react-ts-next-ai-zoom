@@ -15,7 +15,7 @@ export const UpcomingState = ({ meetingId, isCancelling, onCancelMeeting }: Prop
 		<div className='flex flex-col items-center justify-center gap-y-8 rounded-lg bg-white px-4 py-5'>
 			<InfoState
 				title='Not started yet'
-				description='Once you start this coming, a summary will appear here'
+				description='Once you start this meeting, a summary will appear here'
 				image='/svg/upcoming.svg'
 				imageAlt='Upcoming'
 			/>
@@ -23,8 +23,8 @@ export const UpcomingState = ({ meetingId, isCancelling, onCancelMeeting }: Prop
 			<div className='flex w-full flex-col-reverse items-center gap-2 lg:flex-row lg:justify-center'>
 				<Button
 					variant='secondary'
-					onClick={onCancelMeeting}
 					disabled={isCancelling}
+					onClick={onCancelMeeting}
 					className='w-full lg:w-auto'
 				>
 					<BanIcon />
