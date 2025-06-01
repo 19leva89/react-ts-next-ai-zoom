@@ -6,6 +6,7 @@ import { CornerDownRightIcon, VideoIcon } from 'lucide-react'
 import { Badge } from '@/components/ui'
 import { AgentGetOne } from '@/modules/agents/types'
 import { GeneratedAvatar } from '@/components/shared'
+import { capitalizeFirst } from '@/lib/capitalize-first'
 
 export const columns: ColumnDef<AgentGetOne>[] = [
 	{
@@ -16,16 +17,14 @@ export const columns: ColumnDef<AgentGetOne>[] = [
 				<div className='flex items-center gap-x-2'>
 					<GeneratedAvatar variant='botttsNeutral' seed={row.original.name} className='size-6' />
 
-					<span className='font-semibold'>
-						{row.original.name.charAt(0).toUpperCase() + row.original.name.slice(1)}
-					</span>
+					<span className='font-semibold'>{capitalizeFirst(row.original.name)}</span>
 				</div>
 
 				<div className='flex items-center gap-x-2'>
 					<CornerDownRightIcon className='size-3 text-muted-foreground' />
 
 					<span className='max-w-50 truncate text-sm text-muted-foreground'>
-						{row.original.instructions.charAt(0).toUpperCase() + row.original.instructions.slice(1)}
+						{capitalizeFirst(row.original.instructions)}
 					</span>
 				</div>
 			</div>

@@ -4,11 +4,10 @@ import { useRouter } from 'next/navigation'
 import { useSuspenseQuery } from '@tanstack/react-query'
 
 import { useTRPC } from '@/trpc/client'
+import { DataPagination, DataTable } from '@/components/shared'
 import { columns } from '@/modules/agents/ui/components/columns'
-import { DataTable } from '@/modules/agents/ui/components/data-table'
 import { EmptyState, ErrorState, LoadingState } from '@/components/shared'
 import { useAgentsFilters } from '@/modules/agents/hooks/use-agents-filters'
-import { DataPagination } from '@/modules/agents/ui/components/data-pagination'
 
 export const AgentsView = () => {
 	const trpc = useTRPC()
