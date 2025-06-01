@@ -17,6 +17,7 @@ import {
 	Input,
 } from '@/components/ui'
 import { useTRPC } from '@/trpc/client'
+import { MAX_PAGE_SIZE } from '@/constants'
 import { MeetingGetOne } from '@/modules/meetings/types'
 import { meetingsInsertSchema } from '@/modules/meetings/schema'
 import { CommandSelect, GeneratedAvatar } from '@/components/shared'
@@ -37,7 +38,7 @@ export const MeetingForm = ({ initialValues, onSuccess, onCancel }: Props) => {
 
 	const agents = useQuery(
 		trpc.agents.getMany.queryOptions({
-			pageSize: 100,
+			pageSize: MAX_PAGE_SIZE,
 			search: agentSearch,
 		}),
 	)
@@ -92,8 +93,6 @@ export const MeetingForm = ({ initialValues, onSuccess, onCancel }: Props) => {
 
 	return (
 		<>
-			<NewAgentDialog open={openNewAgentDialog} onOpenChange={setOpenNewAgentDialog} />
-
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
 					<FormField
@@ -104,7 +103,7 @@ export const MeetingForm = ({ initialValues, onSuccess, onCancel }: Props) => {
 								<FormLabel>Name</FormLabel>
 
 								<FormControl>
-									<Input {...field} placeholder='e.g Math Consultation' />
+									<Input {...field} placeholder='e.g Math consultations' />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -160,7 +159,7 @@ export const MeetingForm = ({ initialValues, onSuccess, onCancel }: Props) => {
 
 					<div className='flex justify-between'>
 						{onCancel && (
-							<Button variant='outline' disabled={isPending} type='button' onClick={() => onCancel()}>
+							<Button variant='outline' type='button' disabled={isPending} onClick={() => onCancel()}>
 								Cancel
 							</Button>
 						)}
@@ -171,6 +170,8 @@ export const MeetingForm = ({ initialValues, onSuccess, onCancel }: Props) => {
 					</div>
 				</form>
 			</Form>
+
+			<NewAgentDialog open={openNewAgentDialog} onOpenChange={setOpenNewAgentDialog} />
 		</>
 	)
 }

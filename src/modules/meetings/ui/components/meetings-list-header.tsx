@@ -28,15 +28,13 @@ export const MeetingsListHeader = () => {
 
 	return (
 		<>
-			<NewMeetingDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
-
 			<div className='flex flex-col gap-y-4 px-4 py-4 md:px-8'>
 				<div className='flex items-center justify-between'>
-					<h5 className='text-xl font-medium'>My Meetings</h5>
+					<h5 className='text-xl font-medium'>My meetings</h5>
 
 					<Button onClick={() => setIsDialogOpen(true)}>
 						<PlusIcon />
-						New Meeting
+						New meeting
 					</Button>
 				</div>
 
@@ -59,6 +57,8 @@ export const MeetingsListHeader = () => {
 					<ScrollBar orientation='horizontal' />
 				</ScrollArea>
 			</div>
+
+			<NewMeetingDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
 		</>
 	)
 }
