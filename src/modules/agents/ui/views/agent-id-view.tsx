@@ -9,6 +9,7 @@ import { useSuspenseQuery, useQueryClient, useMutation } from '@tanstack/react-q
 import { Badge } from '@/components/ui'
 import { useTRPC } from '@/trpc/client'
 import { useConfirm } from '@/hooks/use-confirm'
+import { capitalizeFirst } from '@/lib/capitalize-first'
 import { ErrorState, GeneratedAvatar, LoadingState } from '@/components/shared'
 import { UpdateAgentDialog } from '@/modules/agents/ui/components/update-agent-dialog'
 import { AgentIdViewHeader } from '@/modules/agents/ui/components/agent-id-view-header'
@@ -68,9 +69,7 @@ export const AgentIdView = ({ agentId }: Props) => {
 						<div className='flex items-center gap-x-3'>
 							<GeneratedAvatar variant='botttsNeutral' seed={data.name} className='size-10' />
 
-							<h2 className='text-2xl font-medium'>
-								{data.name.charAt(0).toUpperCase() + data.name.slice(1)}
-							</h2>
+							<h2 className='text-2xl font-medium'>{capitalizeFirst(data.name)}</h2>
 						</div>
 
 						<Badge variant='outline' className='flex items-center gap-x-2 [&>svg]:size-4'>
@@ -81,9 +80,7 @@ export const AgentIdView = ({ agentId }: Props) => {
 						<div className='flex flex-col gap-y-4'>
 							<p className='text-lg font-medium'>Instructions</p>
 
-							<p className='text-neutral-800'>
-								{data.instructions.charAt(0).toUpperCase() + data.instructions.slice(1)}
-							</p>
+							<p className='text-neutral-800'>{capitalizeFirst(data.instructions)}</p>
 						</div>
 					</div>
 				</div>

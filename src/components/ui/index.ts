@@ -12,7 +12,7 @@ export {
 	CarouselNext,
 	CarouselPrevious,
 } from './carousel'
-export { CommandResponsiveDialog, CommandInput, CommandItem, CommandList } from './command'
+export { CommandEmpty, CommandResponsiveDialog, CommandInput, CommandItem, CommandList } from './command'
 export { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './dialog'
 export {
 	Drawer,
@@ -31,9 +31,10 @@ export {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from './dropdown-menu'
-export { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from './form'
+export { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './form'
 export { Input } from './input'
 export { Label } from './label'
+export { ScrollArea, ScrollBar } from './scroll-area'
 export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select'
 export { Separator } from './separator'
 export { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from './sheet'
