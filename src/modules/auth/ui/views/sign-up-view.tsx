@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { z } from 'zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -237,7 +238,7 @@ export const SignUpView = () => {
 					</Form>
 
 					<div className='relative hidden flex-col items-center justify-center gap-y-4 bg-radial from-sidebar-accent to-sidebar md:flex'>
-						<img src='/svg/logo.svg' alt='Logo' className='size-23' />
+						<Image src='/svg/logo.svg' alt='Logo' width={23} height={23} className='size-23' />
 
 						<p className='text-2xl font-semibold text-white'>Zoom.AI</p>
 					</div>
