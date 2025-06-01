@@ -15,7 +15,7 @@ import { getQueryClient, trpc } from '@/trpc/server'
 import { loadSearchParams } from '@/modules/meetings/params'
 import { MeetingsListHeader } from '@/modules/meetings/ui/components/meetings-list-header'
 
-type Props = {
+interface Props {
 	searchParams: Promise<SearchParams>
 }
 

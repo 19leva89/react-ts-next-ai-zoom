@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 
 import { useTRPC } from '@/trpc/client'
+import { MAX_PAGE_SIZE } from '@/constants'
 import { CommandSelect, GeneratedAvatar } from '@/components/shared'
 import { useMeetingsFilters } from '@/modules/meetings/hooks/use-meetings-filters'
 
@@ -13,7 +14,7 @@ export const AgentIdFilter = () => {
 
 	const { data } = useQuery(
 		trpc.agents.getMany.queryOptions({
-			pageSize: 100,
+			pageSize: MAX_PAGE_SIZE,
 			search: agentSearch,
 		}),
 	)

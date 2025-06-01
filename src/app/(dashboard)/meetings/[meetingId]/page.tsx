@@ -12,7 +12,7 @@ import {
 } from '@/modules/meetings/ui/views/meeting-id-view'
 import { getQueryClient, trpc } from '@/trpc/server'
 
-type Props = {
+interface Props {
 	params: Promise<{ meetingId: string }>
 }
 

@@ -23,7 +23,7 @@ import { meetingsInsertSchema } from '@/modules/meetings/schema'
 import { CommandSelect, GeneratedAvatar } from '@/components/shared'
 import { NewAgentDialog } from '@/modules/agents/ui/components/new-agent-dialog'
 
-type Props = {
+interface Props {
 	initialValues?: MeetingGetOne
 	onSuccess?: (id?: string) => void
 	onCancel?: () => void

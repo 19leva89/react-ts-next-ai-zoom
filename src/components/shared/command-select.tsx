@@ -11,7 +11,7 @@ import {
 } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
-type Props = {
+interface Props {
 	options: Array<{
 		id: string
 		value: string

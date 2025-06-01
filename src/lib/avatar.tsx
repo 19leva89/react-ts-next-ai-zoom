@@ -1,7 +1,7 @@
 import { createAvatar } from '@dicebear/core'
 import { botttsNeutral, initials } from '@dicebear/collection'
 
-type Props = {
+interface Props {
 	seed: string
 	variant: 'botttsNeutral' | 'initials'
 }

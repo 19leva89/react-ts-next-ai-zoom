@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 import { ResponsiveDialog } from '@/components/shared'
 import { MeetingForm } from '@/modules/meetings/ui/components/meeting-form'
 
-type Props = {
+interface Props {
 	open: boolean
 	onOpenChange: (open: boolean) => void
 }

@@ -18,7 +18,7 @@ export const AgentsListHeader = () => {
 
 					<Button onClick={() => setIsDialogOpen(true)}>
 						<PlusIcon />
-						New Agent
+						New agent
 					</Button>
 				</div>
 
