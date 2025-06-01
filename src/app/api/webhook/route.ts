@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
 	const apiKey = req.headers.get('x-api-key')
 	const signature = req.headers.get('x-signature')
 
-	if (!signature || apiKey !== process.env.NEXT_PUBLIC_STREAM_VIDEO_API_KEY) {
+	if (!signature || apiKey !== process.env.STREAM_VIDEO_API_KEY) {
 		return NextResponse.json({ error: 'Missing signature or API key' }, { status: 400 })
 	}
 

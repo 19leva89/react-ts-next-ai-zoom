@@ -56,6 +56,7 @@ export {
 } from './sidebar'
 export { Skeleton } from './skeleton'
 export { Table, TableHeader, TableBody, TableHead, TableRow, TableCell } from './table'
+export { Tabs, TabsContent, TabsList, TabsTrigger } from './tabs'
 export { Textarea } from './textarea'
 export { Toaster } from './sonner'
 export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './tooltip'

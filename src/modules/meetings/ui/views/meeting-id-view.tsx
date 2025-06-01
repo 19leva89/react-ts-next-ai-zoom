@@ -11,6 +11,7 @@ import { ErrorState, LoadingState } from '@/components/shared'
 import { ActiveState } from '@/modules/meetings/ui/components/active-state'
 import { UpcomingState } from '@/modules/meetings/ui/components/upcoming-state'
 import { CancelledState } from '@/modules/meetings/ui/components/cancelled-state'
+import { CompletedState } from '@/modules/meetings/ui/components/completed-state'
 import { ProcessingState } from '@/modules/meetings/ui/components/processing-state'
 import { UpdateMeetingDialog } from '@/modules/meetings/ui/components/update-meeting-dialog'
 import { MeetingIdViewHeader } from '@/modules/meetings/ui/components/meeting-id-view-header'
@@ -78,7 +79,7 @@ export const MeetingIdView = ({ meetingId }: Props) => {
 
 				{isProcessing && <ProcessingState />}
 
-				{isCompleted && <div>Completed</div>}
+				{isCompleted && <CompletedState data={data} />}
 
 				{isCancelled && <CancelledState />}
 			</div>
