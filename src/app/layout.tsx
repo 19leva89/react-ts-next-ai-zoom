@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 	description: 'AI-powered summaries for your Zoom meetings',
 }
 
-export default function RootLayout({ children }: PropsWithChildren) {
+const RootLayout = ({ children }: PropsWithChildren) => {
 	return (
 		<html lang='en'>
 			<body className={`${inter.className} antialiased`}>
@@ -30,3 +30,5 @@ export default function RootLayout({ children }: PropsWithChildren) {
 		</html>
 	)
 }
+
+export default RootLayout
