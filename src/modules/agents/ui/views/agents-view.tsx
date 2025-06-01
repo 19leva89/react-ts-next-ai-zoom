@@ -4,10 +4,9 @@ import { useRouter } from 'next/navigation'
 import { useSuspenseQuery } from '@tanstack/react-query'
 
 import { useTRPC } from '@/trpc/client'
-import { DataPagination, DataTable } from '@/components/shared'
 import { columns } from '@/modules/agents/ui/components/columns'
-import { EmptyState, ErrorState, LoadingState } from '@/components/shared'
 import { useAgentsFilters } from '@/modules/agents/hooks/use-agents-filters'
+import { DataPagination, DataTable, ErrorState, InfoState, LoadingState } from '@/components/shared'
 
 export const AgentsView = () => {
 	const trpc = useTRPC()
@@ -28,9 +27,11 @@ export const AgentsView = () => {
 			/>
 
 			{data.items.length === 0 && (
-				<EmptyState
+				<InfoState
 					title='Create your first agent'
 					description='Create an agent to join your meetings. Each agent will follow your instructions and can interact with participants during the call.'
+					image='/svg/empty.svg'
+					imageAlt='Empty'
 				/>
 			)}
 		</div>

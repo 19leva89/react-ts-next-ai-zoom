@@ -1,7 +1,7 @@
 export { CommandSelect } from './command-select'
 export { DataPagination } from './data-pagination'
 export { DataTable } from './data-table'
-export { EmptyState } from './empty-state'
+export { InfoState } from './info-state'
 export { ErrorState } from './error-state'
 export { GeneratedAvatar } from './generated-avatar'
 export { LoadingState } from './loading-state'

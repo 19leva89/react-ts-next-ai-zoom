@@ -6,7 +6,7 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTRPC } from '@/trpc/client'
 import { columns } from '@/modules/meetings/ui/components/columns'
 import { useMeetingsFilters } from '@/modules/meetings/hooks/use-meetings-filters'
-import { DataPagination, DataTable, EmptyState, ErrorState, LoadingState } from '@/components/shared'
+import { DataPagination, DataTable, ErrorState, InfoState, LoadingState } from '@/components/shared'
 
 export const MeetingsView = () => {
 	const trpc = useTRPC()
@@ -35,9 +35,11 @@ export const MeetingsView = () => {
 			/>
 
 			{data.items.length === 0 && (
-				<EmptyState
+				<InfoState
 					title='Create your first meeting'
 					description='Schedule a meeting to connect with others. Each meeting lets you collaborate, share ideas, and interact with participants in real time.'
+					image='/svg/empty.svg'
+					imageAlt='Empty'
 				/>
 			)}
 		</div>

@@ -16,9 +16,7 @@ interface Props {
 	params: Promise<{ meetingId: string }>
 }
 
-export const MeetingIdPage = async ({ params }: Props) => {
-	const { meetingId } = await params
-
+export const MeetingPage = async ({ params }: Props) => {
 	const session = await auth.api.getSession({
 		headers: await headers(),
 	})
@@ -27,8 +25,12 @@ export const MeetingIdPage = async ({ params }: Props) => {
 		redirect('/sign-in')
 	}
 
+	const { meetingId } = await params
+
 	const queryClient = getQueryClient()
 	void queryClient.prefetchQuery(trpc.meetings.getOne.queryOptions({ id: meetingId }))
+
+	// TODO: Prefetch `meetings.getTranscript`
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>
@@ -41,4 +43,4 @@ export const MeetingIdPage = async ({ params }: Props) => {
 	)
 }
 
-export default MeetingIdPage
+export default MeetingPage

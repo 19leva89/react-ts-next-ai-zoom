@@ -20,19 +20,19 @@ interface Props {
 }
 
 export const MeetingIdView = ({ meetingId }: Props) => {
-	const router = useRouter()
 	const trpc = useTRPC()
+	const router = useRouter()
+	const queryClient = useQueryClient()
 
 	const [updateMeetingDialogOpen, setUpdateMeetingDialogOpen] = useState<boolean>(false)
 
-	const queryClient = useQueryClient()
 	const { data } = useSuspenseQuery(trpc.meetings.getOne.queryOptions({ id: meetingId }))
 
 	const removeMeeting = useMutation(
 		trpc.meetings.remove.mutationOptions({
 			onSuccess: () => {
 				queryClient.invalidateQueries(trpc.meetings.getMany.queryOptions({}))
-
+				// TODO: Invalidate free tier usage
 				router.push('/meetings')
 			},
 			onError: (error) => {
@@ -62,14 +62,6 @@ export const MeetingIdView = ({ meetingId }: Props) => {
 
 	return (
 		<>
-			<RemoveConfirmation />
-
-			<UpdateMeetingDialog
-				open={updateMeetingDialogOpen}
-				onOpenChange={setUpdateMeetingDialogOpen}
-				initialValues={data}
-			/>
-
 			<div className='flex flex-1 flex-col gap-y-4 px-4 py-4 md:px-8'>
 				<MeetingIdViewHeader
 					meetingId={meetingId}
@@ -90,6 +82,14 @@ export const MeetingIdView = ({ meetingId }: Props) => {
 					<UpcomingState meetingId={meetingId} onCancelMeeting={() => {}} isCancelling={false} />
 				)}
 			</div>
+
+			<UpdateMeetingDialog
+				initialValues={data}
+				open={updateMeetingDialogOpen}
+				onOpenChange={setUpdateMeetingDialogOpen}
+			/>
+
+			<RemoveConfirmation />
 		</>
 	)
 }
