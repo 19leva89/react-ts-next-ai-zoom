@@ -29,9 +29,9 @@ export const CallConnect = ({ meetingId, meetingName, userId, userName, userImag
 	useEffect(() => {
 		let _client: StreamVideoClient | undefined
 
-		const apiKey = process.env.STREAM_VIDEO_API_KEY
+		const apiKey = process.env.NEXT_PUBLIC_STREAM_VIDEO_API_KEY
 		if (!apiKey) {
-			throw new Error('STREAM_VIDEO_API_KEY is not configured')
+			throw new Error('NEXT_PUBLIC_STREAM_VIDEO_API_KEY is not configured')
 		}
 
 		const initializeClient = async () => {
