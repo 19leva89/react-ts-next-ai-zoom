@@ -6,6 +6,7 @@ import { EventPayloadMap, EventName } from '@/app/api/webhook/handlers/types'
 
 function handleEvent<T extends EventName>(event: T, payload: unknown): Promise<Response> {
 	const handler = eventHandlers[event]
+
 	return handler(payload as EventPayloadMap[T])
 }
 
