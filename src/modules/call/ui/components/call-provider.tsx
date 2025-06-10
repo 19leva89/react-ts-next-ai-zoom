@@ -3,7 +3,7 @@
 import { LoaderIcon } from 'lucide-react'
 
 import { authClient } from '@/lib/auth-client'
-import { generatedAvatarUri } from '@/lib/avatar'
+import { generateAvatarUri } from '@/lib/avatar'
 import { CallConnect } from '@/modules/call/ui/components/call-connect'
 
 interface Props {
@@ -28,7 +28,7 @@ export const CallProvider = ({ meetingId, meetingName }: Props) => {
 			meetingName={meetingName}
 			userId={data.user.id}
 			userName={data.user.name}
-			userImage={data.user.image ?? generatedAvatarUri({ seed: data.user.name, variant: 'initials' })}
+			userImage={data.user.image ?? generateAvatarUri({ seed: data.user.name, variant: 'initials' })}
 		/>
 	)
 }
