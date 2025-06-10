@@ -6,6 +6,8 @@ import { BookOpenTextIcon, SparklesIcon, FileTextIcon, FileVideoIcon, ClockFadin
 import { formatDuration } from '@/lib/utils'
 import { GeneratedAvatar } from '@/components/shared'
 import { MeetingGetOne } from '@/modules/meetings/types'
+import { Transcript } from '@/modules/meetings/ui/components/transcript'
+import { ChatProvider } from '@/modules/meetings/ui/components/chat-provider'
 import { Badge, ScrollArea, ScrollBar, Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui'
 
 interface Props {
@@ -55,6 +57,14 @@ export const CompletedState = ({ data }: Props) => {
 						<ScrollBar />
 					</ScrollArea>
 				</div>
+
+				<TabsContent value='chat'>
+					<ChatProvider meetingId={data.id} meetingName={data.name} />
+				</TabsContent>
+
+				<TabsContent value='transcript'>
+					<Transcript meetingId={data.id} />
+				</TabsContent>
 
 				<TabsContent value='recording'>
 					<div className='rounded-lg border bg-white px-4 py-5'>
