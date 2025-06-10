@@ -13,7 +13,7 @@ import { LogInIcon } from 'lucide-react'
 
 import { Button } from '@/components/ui'
 import { authClient } from '@/lib/auth-client'
-import { generatedAvatarUri } from '@/lib/avatar'
+import { generateAvatarUri } from '@/lib/avatar'
 
 import '@stream-io/video-react-sdk/dist/css/styles.css'
 
@@ -31,7 +31,7 @@ const DisabledVideoPreview = () => {
 					name: data?.user.name ?? '',
 					image:
 						data?.user.image ??
-						generatedAvatarUri({
+						generateAvatarUri({
 							seed: data?.user.name ?? '',
 							variant: 'initials',
 						}),

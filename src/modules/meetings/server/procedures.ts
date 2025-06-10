@@ -9,7 +9,7 @@ import { agents } from '@/db/schema/agents'
 import { streamChat } from '@/lib/stream-chat'
 import { meetings } from '@/db/schema/meetings'
 import { streamVideo } from '@/lib/stream-video'
-import { generatedAvatarUri } from '@/lib/avatar'
+import { generateAvatarUri } from '@/lib/avatar'
 import { createTRPCRouter, protectedProcedure } from '@/trpc/init'
 import { MeetingStatus, StreamTranscriptItem } from '@/modules/meetings/types'
 import { meetingsInsertSchema, meetingsUpdateSchema } from '@/modules/meetings/schema'
@@ -24,7 +24,7 @@ export const meetingsRouter = createTRPCRouter({
 				role: 'admin',
 				image:
 					ctx.auth.user.image ??
-					generatedAvatarUri({
+					generateAvatarUri({
 						seed: ctx.auth.user.name,
 						variant: 'initials',
 					}),
@@ -99,7 +99,7 @@ export const meetingsRouter = createTRPCRouter({
 				id: existingAgent.id,
 				name: existingAgent.name,
 				role: 'user',
-				image: generatedAvatarUri({
+				image: generateAvatarUri({
 					seed: existingAgent.name,
 					variant: 'botttsNeutral',
 				}),
@@ -220,7 +220,7 @@ export const meetingsRouter = createTRPCRouter({
 					...user,
 					image:
 						user.image ??
-						generatedAvatarUri({
+						generateAvatarUri({
 							seed: user.name,
 							variant: 'initials',
 						}),
@@ -234,7 +234,7 @@ export const meetingsRouter = createTRPCRouter({
 			.then((agents) =>
 				agents.map((agent) => ({
 					...agent,
-					image: generatedAvatarUri({
+					image: generateAvatarUri({
 						seed: agent.name,
 						variant: 'botttsNeutral',
 					}),
@@ -251,7 +251,7 @@ export const meetingsRouter = createTRPCRouter({
 					...item,
 					user: {
 						name: 'Unknown',
-						image: generatedAvatarUri({
+						image: generateAvatarUri({
 							seed: 'Unknown',
 							variant: 'initials',
 						}),

@@ -5,7 +5,7 @@ import Highlighter from 'react-highlight-words'
 import { useQuery } from '@tanstack/react-query'
 
 import { useTRPC } from '@/trpc/client'
-import { generatedAvatarUri } from '@/lib/avatar'
+import { generateAvatarUri } from '@/lib/avatar'
 import { Avatar, AvatarImage, Input, ScrollArea } from '@/components/ui'
 
 interface Props {
@@ -41,11 +41,14 @@ export const Transcript = ({ meetingId }: Props) => {
 			<ScrollArea>
 				<div className='flex flex-col gap-y-4'>
 					{filteredData.map((item) => (
-						<div key={item.start_ts} className='flex flex-col gap-y-2 rounded-md border p-4 hover:bg-muted'>
+						<div
+							key={`${item.user.name}-${item.start_ts}`}
+							className='flex flex-col gap-y-2 rounded-md border p-4 hover:bg-muted'
+						>
 							<div className='flex items-center gap-x-2'>
 								<Avatar className='size-6'>
 									<AvatarImage
-										src={item.user.image ?? generatedAvatarUri({ seed: item.user.name, variant: 'initials' })}
+										src={item.user.image ?? generateAvatarUri({ seed: item.user.name, variant: 'initials' })}
 										alt='User avatar'
 									/>
 								</Avatar>
