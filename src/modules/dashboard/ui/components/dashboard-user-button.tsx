@@ -21,7 +21,7 @@ import {
 } from '@/components/ui'
 import { authClient } from '@/lib/auth-client'
 import { useIsMobile } from '@/hooks/use-mobile'
-import { GeneratedAvatar } from '@/components/shared'
+import { GenerateAvatar } from '@/components/shared'
 
 export const DashboardUserButton = () => {
 	const router = useRouter()
@@ -52,7 +52,7 @@ export const DashboardUserButton = () => {
 							<AvatarImage src={data.user.image} />
 						</Avatar>
 					) : (
-						<GeneratedAvatar seed={data.user.name} variant='initials' className='mr-3 size-9' />
+						<GenerateAvatar seed={data.user.name} variant='initials' className='mr-3 size-9' />
 					)}
 
 					<div className='flex min-w-0 flex-1 flex-col gap-0.5 overflow-hidden text-left'>
@@ -95,7 +95,7 @@ export const DashboardUserButton = () => {
 						<AvatarImage src={data.user.image} />
 					</Avatar>
 				) : (
-					<GeneratedAvatar seed={data.user.name} variant='initials' className='mr-3 size-9' />
+					<GenerateAvatar seed={data.user.name} variant='initials' className='mr-3 size-9' />
 				)}
 
 				<div className='flex min-w-0 flex-1 flex-col gap-0.5 overflow-hidden text-left'>

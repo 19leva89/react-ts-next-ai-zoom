@@ -4,8 +4,8 @@ import { ColumnDef } from '@tanstack/react-table'
 import { CornerDownRightIcon, VideoIcon } from 'lucide-react'
 
 import { Badge } from '@/components/ui'
+import { GenerateAvatar } from '@/components/shared'
 import { AgentGetMany } from '@/modules/agents/types'
-import { GeneratedAvatar } from '@/components/shared'
 import { capitalizeFirst } from '@/lib/capitalize-first'
 
 export const columns: ColumnDef<AgentGetMany[number]>[] = [
@@ -15,7 +15,7 @@ export const columns: ColumnDef<AgentGetMany[number]>[] = [
 		cell: ({ row }) => (
 			<div className='flex flex-col gap-y-1'>
 				<div className='flex items-center gap-x-2'>
-					<GeneratedAvatar variant='botttsNeutral' seed={row.original.name} className='size-6' />
+					<GenerateAvatar variant='botttsNeutral' seed={row.original.name} className='size-6' />
 
 					<span className='font-semibold'>{capitalizeFirst(row.original.name)}</span>
 				</div>

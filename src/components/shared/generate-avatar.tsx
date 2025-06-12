@@ -10,7 +10,7 @@ interface Props {
 	className?: string
 }
 
-export const GeneratedAvatar = ({ seed, variant, className }: Props) => {
+export const GenerateAvatar = ({ seed, variant, className }: Props) => {
 	let avatar
 
 	if (variant === 'botttsNeutral') {

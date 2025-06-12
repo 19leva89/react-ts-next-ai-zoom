@@ -23,14 +23,14 @@ import { DashboardUserButton } from '@/modules/dashboard/ui/components/dashboard
 
 const firstSection = [
 	{
-		icon: VideoIcon,
-		label: 'Meetings',
-		href: '/meetings',
-	},
-	{
 		icon: BotIcon,
 		label: 'Agents',
 		href: '/agents',
+	},
+	{
+		icon: VideoIcon,
+		label: 'Meetings',
+		href: '/meetings',
 	},
 ]
 

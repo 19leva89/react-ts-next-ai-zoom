@@ -18,7 +18,7 @@ import {
 } from '@/components/ui'
 import { useTRPC } from '@/trpc/client'
 import { AgentGetOne } from '@/modules/agents/types'
-import { GeneratedAvatar } from '@/components/shared'
+import { GenerateAvatar } from '@/components/shared'
 import { agentsInsertSchema } from '@/modules/agents/schema'
 
 interface Props {
@@ -89,7 +89,7 @@ export const AgentForm = ({ onCancel, onSuccess, initialValues }: Props) => {
 	return (
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
-				<GeneratedAvatar seed={form.watch('name')} variant='botttsNeutral' className='size-16 border' />
+				<GenerateAvatar seed={form.watch('name')} variant='botttsNeutral' className='size-16 border' />
 
 				<FormField
 					name='name'

@@ -10,7 +10,7 @@ import { Badge } from '@/components/ui'
 import { useTRPC } from '@/trpc/client'
 import { useConfirm } from '@/hooks/use-confirm'
 import { capitalizeFirst } from '@/lib/capitalize-first'
-import { ErrorState, GeneratedAvatar, LoadingState } from '@/components/shared'
+import { ErrorState, GenerateAvatar, LoadingState } from '@/components/shared'
 import { UpdateAgentDialog } from '@/modules/agents/ui/components/update-agent-dialog'
 import { AgentIdViewHeader } from '@/modules/agents/ui/components/agent-id-view-header'
 
@@ -67,7 +67,7 @@ export const AgentIdView = ({ agentId }: Props) => {
 				<div className='mt-5 rounded-lg border bg-white'>
 					<div className='col-span-5 flex flex-col gap-y-5 px-4 py-5'>
 						<div className='flex items-center gap-x-3'>
-							<GeneratedAvatar variant='botttsNeutral' seed={data.name} className='size-10' />
+							<GenerateAvatar variant='botttsNeutral' seed={data.name} className='size-10' />
 
 							<h2 className='text-2xl font-medium'>{capitalizeFirst(data.name)}</h2>
 						</div>

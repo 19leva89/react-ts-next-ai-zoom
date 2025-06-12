@@ -12,7 +12,14 @@ export {
 	CarouselNext,
 	CarouselPrevious,
 } from './carousel'
-export { CommandEmpty, CommandResponsiveDialog, CommandInput, CommandItem, CommandList } from './command'
+export {
+	CommandEmpty,
+	CommandGroup,
+	CommandInput,
+	CommandItem,
+	CommandList,
+	CommandResponsiveDialog,
+} from './command'
 export { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './dialog'
 export {
 	Drawer,
