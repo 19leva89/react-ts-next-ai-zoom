@@ -18,6 +18,7 @@ import {
 	SidebarSeparator,
 } from '@/components/ui'
 import { cn } from '@/lib/utils'
+import { DashboardTrial } from '@/modules/dashboard/ui/components/dashboard-trial'
 import { DashboardUserButton } from '@/modules/dashboard/ui/components/dashboard-user-button'
 
 const firstSection = [
@@ -113,6 +114,8 @@ export const DashboardSidebar = () => {
 			</SidebarContent>
 
 			<SidebarFooter className='text-white'>
+				<DashboardTrial />
+
 				<DashboardUserButton />
 			</SidebarFooter>
 		</Sidebar>

@@ -4,22 +4,24 @@ import { and, count, desc, eq, getTableColumns, ilike, sql } from 'drizzle-orm'
 
 import { db } from '@/db'
 import { agents } from '@/db/schema/agents'
-import { createTRPCRouter, protectedProcedure } from '@/trpc/init'
 import { agentsInsertSchema, agentsUpdateSchema } from '@/modules/agents/schema'
+import { createTRPCRouter, premiumProcedure, protectedProcedure } from '@/trpc/init'
 import { DEFAULT_PAGE, DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE, MIN_PAGE_SIZE } from '@/constants'
 
 export const agentsRouter = createTRPCRouter({
-	create: protectedProcedure.input(agentsInsertSchema).mutation(async ({ ctx, input }) => {
-		const [createdAgent] = await db
-			.insert(agents)
-			.values({
-				...input,
-				userId: ctx.auth.user.id,
-			})
-			.returning()
+	create: premiumProcedure('agents')
+		.input(agentsInsertSchema)
+		.mutation(async ({ ctx, input }) => {
+			const [createdAgent] = await db
+				.insert(agents)
+				.values({
+					...input,
+					userId: ctx.auth.user.id,
+				})
+				.returning()
 
-		return createdAgent
-	}),
+			return createdAgent
+		}),
 
 	getOne: protectedProcedure.input(z.object({ id: z.string() })).query(async ({ ctx, input }) => {
 		const [existingAgent] = await db

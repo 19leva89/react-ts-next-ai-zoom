@@ -34,6 +34,7 @@ export {
 export { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './form'
 export { Input } from './input'
 export { Label } from './label'
+export { Progress } from './progress'
 export { ScrollArea, ScrollBar } from './scroll-area'
 export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select'
 export { Separator } from './separator'
