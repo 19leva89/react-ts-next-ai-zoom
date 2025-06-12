@@ -2,6 +2,7 @@ import { z } from 'zod'
 import { toast } from 'sonner'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
@@ -31,6 +32,7 @@ interface Props {
 
 export const MeetingForm = ({ initialValues, onSuccess, onCancel }: Props) => {
 	const trpc = useTRPC()
+	const router = useRouter()
 	const queryClient = useQueryClient()
 
 	const [agentSearch, setAgentSearch] = useState<string>('')
@@ -47,11 +49,16 @@ export const MeetingForm = ({ initialValues, onSuccess, onCancel }: Props) => {
 		trpc.meetings.create.mutationOptions({
 			onSuccess: async (data) => {
 				await queryClient.invalidateQueries(trpc.meetings.getMany.queryOptions({}))
+				await queryClient.invalidateQueries(trpc.premium.getFreeUsage.queryOptions())
 
 				onSuccess?.(data.id)
 			},
 			onError: (error) => {
 				toast.error(error.message)
+
+				if (error.data?.code === 'FORBIDDEN') {
+					router.push('/upgrade')
+				}
 			},
 		}),
 	)
@@ -64,6 +71,7 @@ export const MeetingForm = ({ initialValues, onSuccess, onCancel }: Props) => {
 				if (initialValues?.id) {
 					await queryClient.invalidateQueries(trpc.meetings.getOne.queryOptions({ id: initialValues.id }))
 				}
+
 				onSuccess?.()
 			},
 			onError: (error) => {

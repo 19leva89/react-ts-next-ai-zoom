@@ -10,8 +10,8 @@ import { streamChat } from '@/lib/stream-chat'
 import { meetings } from '@/db/schema/meetings'
 import { streamVideo } from '@/lib/stream-video'
 import { generateAvatarUri } from '@/lib/avatar'
-import { createTRPCRouter, protectedProcedure } from '@/trpc/init'
 import { MeetingStatus, StreamTranscriptItem } from '@/modules/meetings/types'
+import { createTRPCRouter, premiumProcedure, protectedProcedure } from '@/trpc/init'
 import { meetingsInsertSchema, meetingsUpdateSchema } from '@/modules/meetings/schema'
 import { DEFAULT_PAGE, DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE, MIN_PAGE_SIZE } from '@/constants'
 
@@ -51,63 +51,65 @@ export const meetingsRouter = createTRPCRouter({
 		return token
 	}),
 
-	create: protectedProcedure.input(meetingsInsertSchema).mutation(async ({ ctx, input }) => {
-		const [createdMeeting] = await db
-			.insert(meetings)
-			.values({
-				...input,
-				userId: ctx.auth.user.id,
-			})
-			.returning()
+	create: premiumProcedure('meetings')
+		.input(meetingsInsertSchema)
+		.mutation(async ({ ctx, input }) => {
+			const [createdMeeting] = await db
+				.insert(meetings)
+				.values({
+					...input,
+					userId: ctx.auth.user.id,
+				})
+				.returning()
 
-		// Validate agent exists before creating stream resources
-		const [existingAgent] = await db.select().from(agents).where(eq(agents.id, createdMeeting.agentId))
+			// Validate agent exists before creating stream resources
+			const [existingAgent] = await db.select().from(agents).where(eq(agents.id, createdMeeting.agentId))
 
-		if (!existingAgent) {
-			throw new TRPCError({
-				code: 'NOT_FOUND',
-				message: 'Agent not found',
-			})
-		}
+			if (!existingAgent) {
+				throw new TRPCError({
+					code: 'NOT_FOUND',
+					message: 'Agent not found',
+				})
+			}
 
-		// Create stream call, upsert stream users
-		const call = streamVideo.video.call('default', createdMeeting.id)
+			// Create stream call, upsert stream users
+			const call = streamVideo.video.call('default', createdMeeting.id)
 
-		await call.create({
-			data: {
-				created_by_id: ctx.auth.user.id,
-				custom: {
-					meetingId: createdMeeting.id,
-					meetingName: createdMeeting.name,
-				},
-				settings_override: {
-					transcription: {
-						language: 'en',
-						mode: 'auto-on',
-						closed_caption_mode: 'auto-on',
+			await call.create({
+				data: {
+					created_by_id: ctx.auth.user.id,
+					custom: {
+						meetingId: createdMeeting.id,
+						meetingName: createdMeeting.name,
 					},
-					recording: {
-						mode: 'auto-on',
-						quality: '1080p',
+					settings_override: {
+						transcription: {
+							language: 'en',
+							mode: 'auto-on',
+							closed_caption_mode: 'auto-on',
+						},
+						recording: {
+							mode: 'auto-on',
+							quality: '1080p',
+						},
 					},
 				},
-			},
-		})
+			})
 
-		await streamVideo.upsertUsers([
-			{
-				id: existingAgent.id,
-				name: existingAgent.name,
-				role: 'user',
-				image: generateAvatarUri({
-					seed: existingAgent.name,
-					variant: 'botttsNeutral',
-				}),
-			},
-		])
+			await streamVideo.upsertUsers([
+				{
+					id: existingAgent.id,
+					name: existingAgent.name,
+					role: 'user',
+					image: generateAvatarUri({
+						seed: existingAgent.name,
+						variant: 'botttsNeutral',
+					}),
+				},
+			])
 
-		return createdMeeting
-	}),
+			return createdMeeting
+		}),
 
 	getOne: protectedProcedure.input(z.object({ id: z.string() })).query(async ({ ctx, input }) => {
 		const [existingMeeting] = await db
