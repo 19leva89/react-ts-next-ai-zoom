@@ -4,7 +4,7 @@ import Markdown from 'react-markdown'
 import { BookOpenTextIcon, SparklesIcon, FileTextIcon, FileVideoIcon, ClockFadingIcon } from 'lucide-react'
 
 import { formatDuration } from '@/lib/utils'
-import { GeneratedAvatar } from '@/components/shared'
+import { GenerateAvatar } from '@/components/shared'
 import { MeetingGetOne } from '@/modules/meetings/types'
 import { Transcript } from '@/modules/meetings/ui/components/transcript'
 import { ChatProvider } from '@/modules/meetings/ui/components/chat-provider'
@@ -86,7 +86,7 @@ export const CompletedState = ({ data }: Props) => {
 									href={`/agents/${data.agent.id}`}
 									className='flex items-center gap-x-2 capitalize underline underline-offset-4'
 								>
-									<GeneratedAvatar variant='botttsNeutral' seed={data.agent.name} className='size-5' />
+									<GenerateAvatar variant='botttsNeutral' seed={data.agent.name} className='size-5' />
 									{data.agent.name}
 								</Link>
 

@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { useTRPC } from '@/trpc/client'
 import { MAX_PAGE_SIZE } from '@/constants'
-import { CommandSelect, GeneratedAvatar } from '@/components/shared'
+import { CommandSelect, GenerateAvatar } from '@/components/shared'
 import { useMeetingsFilters } from '@/modules/meetings/hooks/use-meetings-filters'
 
 export const AgentIdFilter = () => {
@@ -28,7 +28,7 @@ export const AgentIdFilter = () => {
 				value: agent.id,
 				children: (
 					<div className='flex items-center gap-x-2'>
-						<GeneratedAvatar seed={agent.name} variant='botttsNeutral' className='size-4' />
+						<GenerateAvatar seed={agent.name} variant='botttsNeutral' className='size-4' />
 
 						{agent.name}
 					</div>

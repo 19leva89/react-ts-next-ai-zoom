@@ -185,12 +185,12 @@ function CommandShortcut({ className, ...props }: ComponentProps<'span'>) {
 export {
 	Command,
 	CommandDialog,
-	CommandInput,
-	CommandList,
 	CommandEmpty,
 	CommandGroup,
+	CommandInput,
 	CommandItem,
+	CommandList,
 	CommandResponsiveDialog,
-	CommandShortcut,
 	CommandSeparator,
+	CommandShortcut,
 }

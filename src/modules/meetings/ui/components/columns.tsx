@@ -14,7 +14,7 @@ import { ColumnDef } from '@tanstack/react-table'
 
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui'
-import { GeneratedAvatar } from '@/components/shared'
+import { GenerateAvatar } from '@/components/shared'
 import { capitalizeFirst } from '@/lib/capitalize-first'
 import { MeetingGetMany } from '@/modules/meetings/types'
 
@@ -59,7 +59,7 @@ export const columns: ColumnDef<MeetingGetMany[number]>[] = [
 						</span>
 					</div>
 
-					<GeneratedAvatar variant='botttsNeutral' seed={row.original.agent.name} className='size-4' />
+					<GenerateAvatar variant='botttsNeutral' seed={row.original.agent.name} className='size-4' />
 
 					<span className='text-sm text-muted-foreground'>
 						{row.original.startedAt ? format(row.original.startedAt, 'MMM d') : ''}

@@ -21,7 +21,7 @@ import { useTRPC } from '@/trpc/client'
 import { MAX_PAGE_SIZE } from '@/constants'
 import { MeetingGetOne } from '@/modules/meetings/types'
 import { meetingsInsertSchema } from '@/modules/meetings/schema'
-import { CommandSelect, GeneratedAvatar } from '@/components/shared'
+import { CommandSelect, GenerateAvatar } from '@/components/shared'
 import { NewAgentDialog } from '@/modules/agents/ui/components/new-agent-dialog'
 
 interface Props {
@@ -134,7 +134,7 @@ export const MeetingForm = ({ initialValues, onSuccess, onCancel }: Props) => {
 											value: agent.id,
 											children: (
 												<div className='flex items-center gap-x-2'>
-													<GeneratedAvatar
+													<GenerateAvatar
 														seed={agent.name}
 														variant='botttsNeutral'
 														className='size-6 border'
