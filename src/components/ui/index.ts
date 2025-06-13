@@ -2,16 +2,8 @@ export { Alert, AlertTitle } from './alert'
 export { Avatar, AvatarFallback, AvatarImage } from './avatar'
 export { Badge } from './badge'
 export { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from './breadcrumb'
-export { Button, buttonVariants } from './button'
-export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card'
-export {
-	Carousel,
-	type CarouselApi,
-	CarouselContent,
-	CarouselItem,
-	CarouselNext,
-	CarouselPrevious,
-} from './carousel'
+export { Button } from './button'
+export { Card, CardContent } from './card'
 export {
 	CommandEmpty,
 	CommandGroup,
@@ -43,7 +35,6 @@ export { Input } from './input'
 export { Label } from './label'
 export { Progress } from './progress'
 export { ScrollArea, ScrollBar } from './scroll-area'
-export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select'
 export { Separator } from './separator'
 export { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from './sheet'
 export {
@@ -52,18 +43,16 @@ export {
 	SidebarFooter,
 	SidebarGroup,
 	SidebarGroupContent,
-	SidebarGroupLabel,
 	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
 	SidebarProvider,
 	SidebarSeparator,
-	SidebarTrigger,
 	useSidebar,
 } from './sidebar'
 export { Skeleton } from './skeleton'
-export { Table, TableHeader, TableBody, TableHead, TableRow, TableCell } from './table'
+export { Table, TableBody, TableRow, TableCell } from './table'
 export { Tabs, TabsContent, TabsList, TabsTrigger } from './tabs'
 export { Textarea } from './textarea'
 export { Toaster } from './sonner'

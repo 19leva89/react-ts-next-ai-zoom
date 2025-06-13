@@ -14,7 +14,7 @@ export function formatDuration(seconds: number) {
 	})
 }
 
-export const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
 
 export function absoluteUrl(path: string): string {
 	// If in a browser, return the relative path

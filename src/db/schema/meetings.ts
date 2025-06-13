@@ -4,13 +4,7 @@ import { pgEnum, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 import { user } from '@/db/schema/user'
 import { agents } from '@/db/schema/agents'
 
-export const meetingStatus = pgEnum('meeting_status', [
-	'upcoming',
-	'active',
-	'completed',
-	'processing',
-	'cancelled',
-])
+const meetingStatus = pgEnum('meeting_status', ['upcoming', 'active', 'completed', 'processing', 'cancelled'])
 
 export const meetings = pgTable('meetings', {
 	id: text('id')

@@ -24,7 +24,7 @@ export type EventPayloadMap = {
 	'message.new': MessageNewEvent
 }
 
-export type EventHandler<T extends EventName = EventName> = (event: EventPayloadMap[T]) => Promise<Response>
+type EventHandler<T extends EventName = EventName> = (event: EventPayloadMap[T]) => Promise<Response>
 
 export type EventHandlerMap = {
 	[K in EventName]: EventHandler<K>
